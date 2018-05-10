@@ -17,7 +17,7 @@ const colors = [
   "pink"
 ]
 
-// removes and returns a random element from an array
+// removes and returns a random element from an array. modifies the array
 function sample(arr) {
   const randIdx = Math.floor(Math.random() * arr.length)
   const value = arr[randIdx]
@@ -43,17 +43,17 @@ function addBobAnimationToElement(el, coord) {
   const newAnim = document.createElement('a-animation')
   newAnim.setAttribute("attribute", "position")
   newAnim.setAttribute("repeat", "indefinite")
-  newAnim.setAttribute("from", [coord[0], coord[1] - 1, coord[2]].join(" "))
-  newAnim.setAttribute("to", [coord[0], coord[1] + 1, coord[2]].join(" "))
+  newAnim.setAttribute("from", [coord[0], coord[1] - 1, coord[2]].join(" ")) // start position of animation
+  newAnim.setAttribute("to", [coord[0], coord[1] + 1, coord[2]].join(" ")) // end position of animation
   newAnim.setAttribute("easing", "ease")
   newAnim.setAttribute("direction", "alternate")
-  newAnim.setAttribute("dur", "2000")
+  newAnim.setAttribute("dur", "2000") // duration
   el.appendChild(newAnim)
   return el
 }
 
 function createSpheres() {
-  x = 4
+  let x = 4
   while (x > 0) {
     setTimeout(() => {
       let [el, coords] = createSphere()
